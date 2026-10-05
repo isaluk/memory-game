@@ -33,6 +33,8 @@ button {
   background: none;
   border: none;
   cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 
 ol,
@@ -131,6 +133,17 @@ body::after {
   background-color: #ffd12f;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after,
+  ::backdrop {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0s !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0s !important;
+  }
+}
 .page {
   display: flex;
   flex-direction: column;
@@ -194,8 +207,10 @@ body::after {
   border-color: #17161b;
   box-shadow: 0 4px 0 #17161b;
 }
-.button--primary:hover {
-  background-color: #f3f0e2;
+@media (hover: hover) {
+  .button--primary:hover {
+    background-color: #f3f0e2;
+  }
 }
 .button--primary:active {
   transform: translateY(2px);
@@ -207,8 +222,10 @@ body::after {
   border-width: 2px;
   border-color: #f3f0e2;
 }
-.button--secondary:hover {
-  background-color: rgba(243, 240, 226, 0.14);
+@media (hover: hover) {
+  .button--secondary:hover {
+    background-color: rgba(243, 240, 226, 0.14);
+  }
 }
 .button--secondary:active {
   transform: translateY(2px);
@@ -219,8 +236,10 @@ body::after {
   border-width: 2px;
   border-color: #17161b;
 }
-.button--outline:hover {
-  background-color: rgba(23, 22, 27, 0.08);
+@media (hover: hover) {
+  .button--outline:hover {
+    background-color: rgba(23, 22, 27, 0.08);
+  }
 }
 .button--outline:active {
   transform: translateY(2px);
@@ -599,6 +618,11 @@ body::after {
     border-radius: 10px;
   }
 }
+.card {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
 @media (hover: hover) {
   .card:not(.card--open, .card--matched, .card--mismatch):hover {
     transform: translateY(-4px);
@@ -727,14 +751,6 @@ body::after {
     background-size: 12px 12px;
   }
 }
-@media (prefers-reduced-motion: reduce) {
-  .card, .card__inner, .card__side, .card__badge, .card--matched .card__badge, .card--mismatch .card__badge {
-    transition: none;
-  }
-  .card--mismatch {
-    animation: none;
-  }
-}
 
 @keyframes card-shake {
   0%, 100% {
@@ -841,7 +857,7 @@ body::after {
   padding: 16px 16px 20px;
   font-size: 13px;
   text-align: center;
-  color: rgba(243, 240, 226, 0.55);
+  color: rgba(243, 240, 226, 0.75);
 }
 @media (max-width: 1024px) {
   .footer {
@@ -859,8 +875,10 @@ body::after {
   text-underline-offset: 3px;
   transition: color 0.2s ease;
 }
-.footer__link:hover {
-  color: #ffd12f;
+@media (hover: hover) {
+  .footer__link:hover {
+    color: #ffd12f;
+  }
 }
 
 .modal {
@@ -940,8 +958,10 @@ body::after {
   border-radius: 50%;
   transition: background-color 0.2s ease, transform 0.2s ease;
 }
-.modal__close:hover {
-  background-color: rgba(23, 22, 27, 0.14);
+@media (hover: hover) {
+  .modal__close:hover {
+    background-color: rgba(23, 22, 27, 0.14);
+  }
 }
 .modal__close:active {
   transform: translateY(1px);
@@ -955,11 +975,6 @@ body::after {
 .modal__close-icon {
   width: 24px;
   height: 24px;
-}
-@media (prefers-reduced-motion: reduce) {
-  .modal[open], .modal[open]::backdrop {
-    animation: none;
-  }
 }
 
 @keyframes modal-in {

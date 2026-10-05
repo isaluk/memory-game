@@ -41,6 +41,7 @@ export const createModal = () => {
 
   const open = ({ content, labelledBy, variant, onClose }) => {
     body.replaceChildren(content);
+    element.scrollTop = 0;
     element.className = variant ? `modal modal--${variant}` : 'modal';
     element.setAttribute('aria-labelledby', labelledBy);
     handleClose = onClose;

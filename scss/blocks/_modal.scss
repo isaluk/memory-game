@@ -85,7 +85,7 @@
       background-color $transition-fast,
       transform $transition-fast;
 
-    &:hover {
+    @include hover {
       background-color: rgba($color-ink, 0.14);
     }
 
@@ -102,13 +102,6 @@
   &__close-icon {
     width: 24px;
     height: 24px;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    &[open],
-    &[open]::backdrop {
-      animation: none;
-    }
   }
 }
 

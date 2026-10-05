@@ -18,17 +18,17 @@ $card-size-mobile: 76px;
     border-radius: 10px;
   }
 
-  &:not(.card--open, .card--matched, .card--mismatch) {
-    @media (hover: hover) {
-      &:hover {
-        transform: translateY(-4px);
+  user-select: none;
 
-        .card__side--back {
-          border-color: $color-chalk;
-          box-shadow:
-            0 10px 0 rgba(0, 13, 5, 0.5),
-            0 0 24px rgba($color-yellow, 0.45);
-        }
+  &:not(.card--open, .card--matched, .card--mismatch) {
+    @include hover {
+      transform: translateY(-4px);
+
+      .card__side--back {
+        border-color: $color-chalk;
+        box-shadow:
+          0 10px 0 rgba(0, 13, 5, 0.5),
+          0 0 24px rgba($color-yellow, 0.45);
       }
     }
   }
@@ -150,21 +150,6 @@ $card-size-mobile: 76px;
       height: 18px;
       border-width: 1.5px;
       background-size: 12px 12px;
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    &,
-    &__inner,
-    &__side,
-    &__badge,
-    &--matched .card__badge,
-    &--mismatch .card__badge {
-      transition: none;
-    }
-
-    &--mismatch {
-      animation: none;
     }
   }
 }

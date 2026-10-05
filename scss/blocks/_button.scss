@@ -32,7 +32,7 @@
     border-color: $color-ink;
     box-shadow: $shadow-hard;
 
-    &:hover {
+    @include hover {
       background-color: $color-chalk;
     }
 
@@ -48,7 +48,7 @@
     border-width: 2px;
     border-color: $color-chalk;
 
-    &:hover {
+    @include hover {
       background-color: rgba($color-chalk, 0.14);
     }
 
@@ -63,7 +63,7 @@
     border-width: 2px;
     border-color: $color-ink;
 
-    &:hover {
+    @include hover {
       background-color: rgba($color-ink, 0.08);
     }
 

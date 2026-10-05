@@ -4,7 +4,7 @@
   padding: 16px 16px 20px;
   font-size: 13px;
   text-align: center;
-  color: rgba($color-chalk, 0.55);
+  color: rgba($color-chalk, 0.75);
 
   @include tablet {
     font-size: 12px;
@@ -20,7 +20,7 @@
     text-underline-offset: 3px;
     transition: color $transition-fast;
 
-    &:hover {
+    @include hover {
       color: $color-yellow;
     }
   }

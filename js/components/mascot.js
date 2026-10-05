@@ -14,7 +14,13 @@ export const createMascot = () => {
       bubble,
       createElement('img', {
         className: 'mascot__image',
-        attrs: { src: 'assets/images/mascot.png', alt: '', width: '256', height: '320' },
+        attrs: {
+          src: 'assets/images/mascot.png',
+          alt: '',
+          width: '256',
+          height: '320',
+          draggable: 'false',
+        },
       }),
     ],
   });
