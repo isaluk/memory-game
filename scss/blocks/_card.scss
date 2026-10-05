@@ -1,7 +1,7 @@
 @use "../abstracts" as *;
 
 $card-size: 132px;
-$card-size-mobile: 76px;
+$card-size-mobile: min(76px, calc((100vw - 74px) / 4));
 
 .card {
   position: relative;

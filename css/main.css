@@ -613,8 +613,8 @@ body::after {
 }
 @media (max-width: 600px) {
   .card {
-    width: 76px;
-    height: 76px;
+    width: min(76px, (100vw - 74px) / 4);
+    height: min(76px, (100vw - 74px) / 4);
     border-radius: 10px;
   }
 }
@@ -849,6 +849,7 @@ body::after {
     clip-path: polygon(0 4.5px, 13px 12px, 0 19.5px);
   }
   .mascot__image {
+    flex-shrink: 0;
     width: 141px;
   }
 }
