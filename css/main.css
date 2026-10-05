@@ -1145,6 +1145,46 @@ body::after {
   }
 }
 
+.confetti {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.confetti__piece {
+  position: absolute;
+  top: -24px;
+  left: var(--x);
+  width: 10px;
+  height: 16px;
+  background-color: var(--color);
+  border-radius: 3px;
+  opacity: 0;
+  animation: confetti-fall var(--duration) cubic-bezier(0.25, 0.6, 0.5, 1) var(--delay) forwards;
+}
+.confetti__piece--strip {
+  width: 6px;
+  height: 20px;
+}
+.confetti__piece--circle {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+@keyframes confetti-fall {
+  0% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) rotate(0);
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(var(--drift), 105vh, 0) rotate(var(--rotate));
+  }
+}
 .leaderboard {
   display: flex;
   flex-direction: column;

@@ -1,6 +1,7 @@
 import { createElement } from '../utils/create-element.js';
 import { pluralize, MOVE_FORMS } from '../utils/format.js';
 import { createButton } from './button.js';
+import { createConfetti } from './confetti.js';
 
 export const VICTORY_TITLE_ID = 'victory-title';
 
@@ -49,6 +50,7 @@ export const createVictory = ({ moves, place, totalPairs, onNewGame, onClose }) 
         className: 'victory__actions',
         children: [newGameButton, closeButton],
       }),
+      createConfetti(),
     ],
   });
 };
