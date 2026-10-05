@@ -1,0 +1,72 @@
+@use '../abstracts' as *;
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  text-align: center;
+
+  &__title {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-family: $font-chalk;
+    font-size: 48px;
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+
+    &::before,
+    &::after {
+      content: '';
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      background: url('../assets/images/splash.svg') center / contain no-repeat;
+    }
+
+    &::after {
+      transform: scaleX(-1);
+    }
+
+    @include tablet {
+      gap: 10px;
+      font-size: 40px;
+
+      &::before,
+      &::after {
+        width: 32px;
+        height: 32px;
+      }
+    }
+
+    @include mobile {
+      gap: 8px;
+      font-size: 32px;
+
+      &::before,
+      &::after {
+        width: 24px;
+        height: 24px;
+      }
+    }
+  }
+
+  &__text {
+    max-width: 600px;
+    font-size: 16px;
+    color: rgba($color-chalk, 0.8);
+
+    @include tablet {
+      max-width: 400px;
+      font-size: 15px;
+    }
+
+    @include mobile {
+      max-width: 300px;
+      font-size: 13px;
+    }
+  }
+}

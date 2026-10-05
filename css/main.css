@@ -130,3 +130,158 @@ body::after {
   color: #17161b;
   background-color: #ffd12f;
 }
+
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+.page__main {
+  display: flex;
+  flex: 1 0 auto;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 12px 48px 24px;
+}
+@media (max-width: 1024px) {
+  .page__main {
+    gap: 20px;
+    padding: 20px 32px;
+  }
+}
+@media (max-width: 600px) {
+  .page__main {
+    gap: 16px;
+    padding: 16px 15px;
+  }
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  text-align: center;
+}
+.intro__title {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: "Rubik Dirt", "Rubik", sans-serif;
+  font-size: 48px;
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+.intro__title::before, .intro__title::after {
+  content: "";
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  background: url("../assets/images/splash.svg") center/contain no-repeat;
+}
+.intro__title::after {
+  transform: scaleX(-1);
+}
+@media (max-width: 1024px) {
+  .intro__title {
+    gap: 10px;
+    font-size: 40px;
+  }
+  .intro__title::before, .intro__title::after {
+    width: 32px;
+    height: 32px;
+  }
+}
+@media (max-width: 600px) {
+  .intro__title {
+    gap: 8px;
+    font-size: 32px;
+  }
+  .intro__title::before, .intro__title::after {
+    width: 24px;
+    height: 24px;
+  }
+}
+.intro__text {
+  max-width: 600px;
+  font-size: 16px;
+  color: rgba(243, 240, 226, 0.8);
+}
+@media (max-width: 1024px) {
+  .intro__text {
+    max-width: 400px;
+    font-size: 15px;
+  }
+}
+@media (max-width: 600px) {
+  .intro__text {
+    max-width: 300px;
+    font-size: 13px;
+  }
+}
+
+.playground {
+  display: grid;
+  grid-template-areas: "score board mascot";
+  grid-template-columns: 1fr auto 1fr;
+  align-items: start;
+  gap: 32px;
+  width: 100%;
+}
+.playground__score {
+  grid-area: score;
+  justify-self: center;
+}
+.playground__board {
+  grid-area: board;
+}
+.playground__mascot {
+  grid-area: mascot;
+  justify-self: center;
+}
+@media (max-width: 1024px) {
+  .playground {
+    grid-template-areas: "score" "board" "mascot";
+    grid-template-columns: 1fr;
+    gap: 24px;
+    justify-items: center;
+  }
+}
+@media (max-width: 600px) {
+  .playground {
+    gap: 16px;
+  }
+}
+
+.footer {
+  padding: 16px;
+  font-size: 13px;
+  text-align: center;
+  color: rgba(243, 240, 226, 0.6);
+}
+@media (max-width: 1024px) {
+  .footer {
+    font-size: 12px;
+  }
+}
+@media (max-width: 600px) {
+  .footer {
+    padding: 12px 16px;
+    font-size: 11px;
+  }
+}
+.footer__link {
+  color: inherit;
+  text-underline-offset: 3px;
+  transition: color 0.2s ease;
+}
+.footer__link:hover {
+  color: #ffd12f;
+}
