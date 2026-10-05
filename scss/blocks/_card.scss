@@ -53,6 +53,7 @@ $card-size-mobile: 76px;
 
     .card__badge {
       opacity: 1;
+      transition: opacity $transition-fast 0.3s;
       background-color: $color-success;
       background-image: url("../assets/icons/check.svg");
     }
@@ -70,6 +71,7 @@ $card-size-mobile: 76px;
 
     .card__badge {
       opacity: 1;
+      transition: opacity $transition-fast 0.3s;
       background-color: $color-error;
       background-image: url("../assets/icons/cross.svg");
     }
@@ -139,7 +141,7 @@ $card-size-mobile: 76px;
     background: center / 18px 18px no-repeat;
     opacity: 0;
     pointer-events: none;
-    transition: opacity $transition-fast 0.3s;
+    transition: none;
 
     @include mobile {
       top: 4px;
@@ -155,7 +157,9 @@ $card-size-mobile: 76px;
     &,
     &__inner,
     &__side,
-    &__badge {
+    &__badge,
+    &--matched .card__badge,
+    &--mismatch .card__badge {
       transition: none;
     }
 

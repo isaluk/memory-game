@@ -1,11 +1,10 @@
 import { createElement } from '../utils/create-element.js';
-
-const DEFAULT_PHRASE = 'Не спеши! Ленивцы никогда не торопятся 😴';
+import { START_PHRASE } from '../data/phrases.js';
 
 export const createMascot = () => {
   const bubble = createElement('p', {
     className: 'mascot__bubble',
-    text: DEFAULT_PHRASE,
+    text: START_PHRASE,
     attrs: { 'aria-live': 'polite' },
   });
 
@@ -20,7 +19,7 @@ export const createMascot = () => {
     ],
   });
 
-  const say = (phrase = DEFAULT_PHRASE) => {
+  const say = (phrase = START_PHRASE) => {
     bubble.textContent = phrase;
   };
 

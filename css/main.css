@@ -620,6 +620,7 @@ body::after {
 }
 .card--matched .card__badge {
   opacity: 1;
+  transition: opacity 0.2s ease 0.3s;
   background-color: #3ee07f;
   background-image: url("../assets/icons/check.svg");
 }
@@ -632,6 +633,7 @@ body::after {
 }
 .card--mismatch .card__badge {
   opacity: 1;
+  transition: opacity 0.2s ease 0.3s;
   background-color: #ff5b3d;
   background-image: url("../assets/icons/cross.svg");
 }
@@ -713,7 +715,7 @@ body::after {
   background: center/18px 18px no-repeat;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.2s ease 0.3s;
+  transition: none;
 }
 @media (max-width: 600px) {
   .card__badge {
@@ -726,7 +728,7 @@ body::after {
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .card, .card__inner, .card__side, .card__badge {
+  .card, .card__inner, .card__side, .card__badge, .card--matched .card__badge, .card--mismatch .card__badge {
     transition: none;
   }
   .card--mismatch {
