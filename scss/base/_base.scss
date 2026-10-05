@@ -1,0 +1,124 @@
+@use '../abstracts' as *;
+
+$chalk-line: linear-gradient($color-chalk, $color-chalk);
+
+@mixin pitch-portrait($inset, $line, $radius, $box-width, $box-height) {
+  $dot: #{$line * 4};
+  $circle: #{$radius * 2};
+  $box-bottom: #{$box-height - $line};
+
+  &::before {
+    inset: $inset;
+    border-width: $line;
+    background:
+      radial-gradient(circle, $color-chalk $line, transparent $line + 1px) center / #{$dot} #{$dot} no-repeat,
+      radial-gradient(
+          circle,
+          transparent $radius - $line,
+          $color-chalk $radius - $line,
+          $color-chalk $radius,
+          transparent $radius
+        )
+        center / #{$circle} #{$circle} no-repeat,
+      $chalk-line center / 100% #{$line} no-repeat;
+  }
+
+  &::after {
+    top: $inset + $line;
+    right: auto;
+    bottom: $inset + $line;
+    left: 50%;
+    width: $box-width;
+    height: auto;
+    transform: translateX(-50%);
+    background:
+      $chalk-line 0 0 / #{$line} #{$box-height} no-repeat,
+      $chalk-line 100% 0 / #{$line} #{$box-height} no-repeat,
+      $chalk-line 0 #{$box-bottom} / 100% #{$line} no-repeat,
+      $chalk-line 0 100% / #{$line} #{$box-height} no-repeat,
+      $chalk-line 100% 100% / #{$line} #{$box-height} no-repeat,
+      $chalk-line 0 calc(100% - #{$box-bottom}) / 100% #{$line} no-repeat;
+  }
+}
+
+body {
+  font-family: $font-base;
+  color: $color-chalk;
+  background-color: $color-field-deep;
+  background-image:
+    radial-gradient(ellipse at center, transparent 35%, rgba(2, 20, 8, 0.55) 100%),
+    repeating-linear-gradient(90deg, $color-field-base 0 96px, $color-field-stripe 96px 192px);
+  background-attachment: fixed, scroll;
+
+  &::before,
+  &::after {
+    content: '';
+    position: fixed;
+    z-index: -1;
+    opacity: $chalk-opacity;
+    pointer-events: none;
+  }
+
+  &::before {
+    inset: 24px;
+    border: 4px solid $color-chalk;
+    border-radius: 6px;
+    background:
+      radial-gradient(circle, $color-chalk 5px, transparent 6px) center / 12px 12px no-repeat,
+      radial-gradient(circle, transparent 148px, $color-chalk 148px, $color-chalk 152px, transparent 152px) center /
+        304px 304px no-repeat,
+      $chalk-line center / 4px 100% no-repeat;
+  }
+
+  &::after {
+    top: 50%;
+    right: 28px;
+    left: 28px;
+    height: 500px;
+    transform: translateY(-50%);
+    background:
+      $chalk-line 0 0 / 250px 4px no-repeat,
+      $chalk-line 0 100% / 250px 4px no-repeat,
+      $chalk-line 246px 0 / 4px 100% no-repeat,
+      $chalk-line 100% 0 / 250px 4px no-repeat,
+      $chalk-line 100% 100% / 250px 4px no-repeat,
+      $chalk-line calc(100% - 246px) 0 / 4px 100% no-repeat;
+  }
+
+  @include tablet {
+    background-image:
+      radial-gradient(ellipse at center, transparent 35%, rgba(2, 20, 8, 0.55) 100%),
+      repeating-linear-gradient(180deg, $color-field-base 0 96px, $color-field-stripe 96px 192px);
+
+    @include pitch-portrait(20px, 4px, 112px, 440px, 170px);
+  }
+
+  @include mobile {
+    background-image:
+      radial-gradient(ellipse at center, transparent 35%, rgba(2, 20, 8, 0.55) 100%),
+      repeating-linear-gradient(180deg, $color-field-base 0 64px, $color-field-stripe 64px 128px);
+
+    @include pitch-portrait(12px, 3px, 66px, 220px, 96px);
+  }
+}
+
+:focus-visible {
+  @include focus-ring;
+}
+
+::selection {
+  color: $color-ink;
+  background-color: $color-yellow;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after,
+  ::backdrop {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0s !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0s !important;
+  }
+}

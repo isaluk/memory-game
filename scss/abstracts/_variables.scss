@@ -1,0 +1,56 @@
+$color-field-deep: #0b3a1c;
+$color-field-base: #17602c;
+$color-field-stripe: #1c6e33;
+$color-field-leaf: #2e8b3e;
+$color-chalk: #f3f0e2;
+$color-yellow: #ffd12f;
+$color-yellow-dark: #e5a900;
+$color-ink: #17161b;
+$color-ink-soft: #2a2930;
+$color-led: #47ff7a;
+$color-success: #3ee07f;
+$color-error: #ff5b3d;
+$color-surface: #fffdf6;
+$color-muted: #6b6a72;
+$color-silver: #d9dce3;
+$color-bronze: #e8a36a;
+$color-white: #ffffff;
+
+$card-colors: (
+  footballer: #bfebc8,
+  sleepyhead: #ccd0ff,
+  coffee-lover: #ffd3ae,
+  coder: #b8e4ff,
+  music-lover: #ffc4dc,
+  graduate: #e3f59e,
+  goalkeeper: #e5c8ff,
+  chill: #a6f0e0,
+);
+
+$font-base: 'Rubik', system-ui, sans-serif;
+$font-heading: 'Russo One', 'Rubik', sans-serif;
+$font-chalk: 'Rubik Dirt', 'Rubik', sans-serif;
+$font-led: 'Orbitron', 'Rubik', monospace;
+
+$radius-card: 16px;
+$radius-panel: 18px;
+$radius-board: 28px;
+$radius-modal: 28px;
+$radius-pill: 999px;
+
+$shadow-hard: 0 4px 0 $color-ink;
+$shadow-hard-lg: 0 8px 0 $color-ink;
+$shadow-card: 0 6px 0 rgba(0, 20, 5, 0.45), 0 12px 24px -4px rgba(0, 0, 0, 0.25);
+$glow-led: 0 0 14px rgba($color-led, 0.75);
+$glow-chalk: 0 0 18px rgba($color-chalk, 0.45);
+
+$chalk-opacity: 0.38;
+
+$transition-fast: 0.2s ease;
+$transition-base: 0.4s ease;
+
+$bp-laptop: 1279px;
+$bp-tablet: 1024px;
+$bp-header-compact: 790px;
+$bp-mobile: 600px;
+$bp-small: 420px;

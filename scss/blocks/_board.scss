@@ -1,0 +1,17 @@
+@use "../abstracts" as *;
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  gap: 16px;
+  padding: 18px;
+  background-color: rgba($color-ink, 0.2);
+  border: 2px dashed rgba($color-chalk, 0.35);
+  border-radius: $radius-board;
+
+  @include mobile {
+    gap: 8px;
+    padding: 8px;
+    border-radius: 18px;
+  }
+}

@@ -1,0 +1,27 @@
+@use '../abstracts' as *;
+
+.footer {
+  padding: 16px 16px 20px;
+  font-size: 13px;
+  text-align: center;
+  color: rgba($color-chalk, 0.75);
+
+  @include tablet {
+    font-size: 12px;
+  }
+
+  @include mobile {
+    padding: 12px 16px;
+    font-size: 11px;
+  }
+
+  &__link {
+    color: inherit;
+    text-underline-offset: 3px;
+    transition: color $transition-fast;
+
+    @include hover {
+      color: $color-yellow;
+    }
+  }
+}

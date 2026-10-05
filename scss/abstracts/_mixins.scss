@@ -1,0 +1,77 @@
+@use 'variables' as *;
+
+@mixin laptop {
+  @media (max-width: $bp-laptop) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: $bp-tablet) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: $bp-mobile) {
+    @content;
+  }
+}
+
+@mixin small {
+  @media (max-width: $bp-small) {
+    @content;
+  }
+}
+
+@mixin hover {
+  @media (hover: hover) {
+    &:hover {
+      @content;
+    }
+  }
+}
+
+@mixin focus-ring($offset: 3px) {
+  outline: 3px solid $color-led;
+  outline-offset: $offset;
+}
+
+@mixin led-panel {
+  background-color: rgba($color-ink, 0.92);
+  border: 3px solid $color-chalk;
+  border-radius: $radius-panel;
+  box-shadow:
+    $glow-chalk,
+    inset 0 0 12px rgba($color-chalk, 0.25);
+}
+
+@mixin led-value {
+  font-family: $font-led;
+  font-size: 44px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: $color-led;
+  text-shadow: $glow-led;
+}
+
+@mixin caps-label {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+@mixin visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}

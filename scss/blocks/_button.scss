@@ -1,0 +1,74 @@
+@use "../abstracts" as *;
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 24px 12px 22px;
+  font-family: $font-base;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.2;
+  white-space: nowrap;
+  border-style: solid;
+  border-radius: $radius-pill;
+  transition:
+    background-color $transition-fast,
+    color $transition-fast,
+    transform $transition-fast,
+    box-shadow $transition-fast;
+
+  &__icon {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+  }
+
+  &--primary {
+    color: $color-ink;
+    background-color: $color-yellow;
+    border-width: 3px;
+    border-color: $color-ink;
+    box-shadow: $shadow-hard;
+
+    @include hover {
+      background-color: $color-chalk;
+    }
+
+    &:active {
+      transform: translateY(2px);
+      box-shadow: 0 2px 0 $color-ink;
+    }
+  }
+
+  &--secondary {
+    color: $color-chalk;
+    background-color: rgba($color-ink, 0.28);
+    border-width: 2px;
+    border-color: $color-chalk;
+
+    @include hover {
+      background-color: rgba($color-chalk, 0.14);
+    }
+
+    &:active {
+      transform: translateY(2px);
+    }
+  }
+
+  &--outline {
+    color: $color-ink;
+    background-color: transparent;
+    border-width: 2px;
+    border-color: $color-ink;
+
+    @include hover {
+      background-color: rgba($color-ink, 0.08);
+    }
+
+    &:active {
+      transform: translateY(2px);
+    }
+  }
+}
