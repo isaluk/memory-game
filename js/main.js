@@ -1,9 +1,11 @@
 import { createElement } from './utils/create-element.js';
+import { createHeader } from './components/header.js';
 import { createIntro } from './components/intro.js';
 import { createPlayground } from './components/playground.js';
 import { createFooter } from './components/footer.js';
 
 const initApp = () => {
+  const header = createHeader();
   const playground = createPlayground();
 
   const main = createElement('main', {
@@ -13,7 +15,7 @@ const initApp = () => {
 
   const page = createElement('div', {
     className: 'page',
-    children: [main, createFooter()],
+    children: [header.element, main, createFooter()],
   });
 
   document.body.append(page);

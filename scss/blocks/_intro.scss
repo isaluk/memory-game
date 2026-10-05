@@ -7,6 +7,10 @@
   gap: 6px;
   text-align: center;
 
+  @include mobile {
+    gap: 4px;
+  }
+
   &__title {
     display: flex;
     align-items: center;
