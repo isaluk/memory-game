@@ -14,6 +14,7 @@ import { createLeaderboard, LEADERBOARD_TITLE_ID } from './components/leaderboar
 import { createDeck } from './game/deck.js';
 import { createGame } from './game/game.js';
 import { addResult, getResults } from './services/leaderboard-storage.js';
+import { createSound } from './services/sound.js';
 import { CARDS } from './data/cards.js';
 import { MATCH_PHRASES, MISMATCH_PHRASES, WIN_PHRASE } from './data/phrases.js';
 
@@ -28,6 +29,7 @@ const initApp = () => {
   const scoreboard = createScoreboard({ totalPairs: CARDS.length });
   const mascot = createMascot();
   const modal = createModal();
+  const sound = createSound();
 
   const showVictory = ({ moves, place }) => {
     modal.open({
@@ -37,7 +39,7 @@ const initApp = () => {
         totalPairs: CARDS.length,
         onNewGame: () => {
           modal.close();
-          startGame();
+          restartGame();
         },
         onClose: () => modal.close(),
       }),
@@ -61,10 +63,19 @@ const initApp = () => {
   const game = createGame({
     onCardChange: (index, state) => cards[index].setState(state),
     onStatsChange: (stats) => scoreboard.update(stats),
-    onMatch: () => mascot.say(getRandomItem(MATCH_PHRASES)),
-    onMismatch: () => mascot.say(getRandomItem(MISMATCH_PHRASES)),
+    onFlip: () => sound.play('flip'),
+    onMatch: () => {
+      sound.play('match');
+      mascot.say(getRandomItem(MATCH_PHRASES));
+    },
+    onMismatch: () => {
+      sound.play('mismatch');
+      mascot.say(getRandomItem(MISMATCH_PHRASES));
+    },
+    onHide: () => sound.play('hide'),
     onWin: ({ moves }) => {
       const place = addResult(moves);
+      sound.play('win');
       mascot.say(WIN_PHRASE);
       victoryTimer = setTimeout(() => showVictory({ moves, place }), VICTORY_DELAY);
     },
@@ -80,7 +91,12 @@ const initApp = () => {
     mascot.say();
   };
 
-  header.newGameButton.addEventListener('click', startGame);
+  const restartGame = () => {
+    sound.play('shuffle');
+    startGame();
+  };
+
+  header.newGameButton.addEventListener('click', restartGame);
   header.leaderboardButton.addEventListener('click', showLeaderboard);
 
   playground.scoreSlot.append(scoreboard.element, createHint());

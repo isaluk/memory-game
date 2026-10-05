@@ -1,6 +1,14 @@
 export const MISMATCH_DELAY = 1000;
 
-export const createGame = ({ onCardChange, onStatsChange, onMatch, onMismatch, onWin } = {}) => {
+export const createGame = ({
+  onCardChange,
+  onStatsChange,
+  onFlip,
+  onMatch,
+  onMismatch,
+  onHide,
+  onWin,
+} = {}) => {
   let cards = [];
   let openedIndexes = [];
   let moves = 0;
@@ -22,6 +30,7 @@ export const createGame = ({ onCardChange, onStatsChange, onMatch, onMismatch, o
     openedIndexes = [];
     isLocked = false;
     mismatchTimer = null;
+    onHide?.();
   };
 
   const checkPair = () => {
@@ -72,6 +81,7 @@ export const createGame = ({ onCardChange, onStatsChange, onMatch, onMismatch, o
 
     setCardState(index, 'open');
     openedIndexes.push(index);
+    onFlip?.();
 
     if (openedIndexes.length === 2) {
       checkPair();
