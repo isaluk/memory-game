@@ -6,7 +6,7 @@ export const createLogo = () =>
     children: [
       createElement('img', {
         className: 'logo__image',
-        attrs: { src: 'assets/icons/rs-logo.svg', alt: 'RS School', width: '44', height: '44' },
+        attrs: { src: 'assets/icons/logo.svg', alt: '', width: '44', height: '44' },
       }),
       createElement('p', {
         className: 'logo__text',
