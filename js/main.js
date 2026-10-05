@@ -10,9 +10,10 @@ import { createMascot } from './components/mascot.js';
 import { createFooter } from './components/footer.js';
 import { createModal } from './components/modal.js';
 import { createVictory, VICTORY_TITLE_ID } from './components/victory.js';
+import { createLeaderboard, LEADERBOARD_TITLE_ID } from './components/leaderboard.js';
 import { createDeck } from './game/deck.js';
 import { createGame } from './game/game.js';
-import { addResult } from './services/leaderboard-storage.js';
+import { addResult, getResults } from './services/leaderboard-storage.js';
 import { CARDS } from './data/cards.js';
 import { MATCH_PHRASES, MISMATCH_PHRASES, WIN_PHRASE } from './data/phrases.js';
 
@@ -45,6 +46,18 @@ const initApp = () => {
     });
   };
 
+  const showLeaderboard = () => {
+    modal.open({
+      content: createLeaderboard({
+        results: getResults(),
+        totalPairs: CARDS.length,
+        onClose: () => modal.close(),
+      }),
+      labelledBy: LEADERBOARD_TITLE_ID,
+      variant: 'wide',
+    });
+  };
+
   const game = createGame({
     onCardChange: (index, state) => cards[index].setState(state),
     onStatsChange: (stats) => scoreboard.update(stats),
@@ -68,6 +81,7 @@ const initApp = () => {
   };
 
   header.newGameButton.addEventListener('click', startGame);
+  header.leaderboardButton.addEventListener('click', showLeaderboard);
 
   playground.scoreSlot.append(scoreboard.element, createHint());
   playground.boardSlot.append(board.element);

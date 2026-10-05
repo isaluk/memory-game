@@ -27,6 +27,14 @@
 
   &--wide {
     width: 560px;
+
+    .modal__panel {
+      padding-top: 20px;
+
+      @include mobile {
+        padding-top: 12px;
+      }
+    }
   }
 
   &--victory {

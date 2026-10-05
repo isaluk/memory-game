@@ -888,6 +888,14 @@ body::after {
 .modal--wide {
   width: 560px;
 }
+.modal--wide .modal__panel {
+  padding-top: 20px;
+}
+@media (max-width: 600px) {
+  .modal--wide .modal__panel {
+    padding-top: 12px;
+  }
+}
 .modal--victory {
   padding-top: 75px;
 }
@@ -1082,4 +1090,196 @@ body::after {
   .victory__actions .button {
     padding-inline: 16px 18px;
   }
+}
+
+.leaderboard {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+@media (max-width: 600px) {
+  .leaderboard {
+    gap: 12px;
+  }
+}
+.leaderboard__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  padding-right: 56px;
+}
+.leaderboard__icon {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+}
+.leaderboard__title {
+  font-family: "Russo One", "Rubik", sans-serif;
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 1.2;
+}
+@media (max-width: 600px) {
+  .leaderboard__title {
+    font-size: 22px;
+  }
+}
+.leaderboard__subtitle {
+  font-size: 15px;
+  color: #6b6a72;
+}
+@media (max-width: 600px) {
+  .leaderboard__subtitle {
+    font-size: 13px;
+  }
+}
+.leaderboard__table {
+  width: 100%;
+  margin-top: -6px;
+  border-collapse: separate;
+  border-spacing: 0 6px;
+}
+@media (max-width: 600px) {
+  .leaderboard__table {
+    margin-top: -4px;
+    border-spacing: 0 4px;
+  }
+}
+.leaderboard__caption {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+.leaderboard__head-cell {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0 0 2px 16px;
+  font-size: 11px;
+  text-align: left;
+  color: #6b6a72;
+}
+.leaderboard__head-cell:first-child {
+  width: 60px;
+  padding-left: 0;
+  text-align: center;
+}
+.leaderboard__head-cell:last-child {
+  padding-right: 20px;
+  text-align: right;
+}
+.leaderboard__cell {
+  padding: 8px 0 8px 16px;
+  background-color: rgba(23, 22, 27, 0.05);
+}
+.leaderboard__cell:first-child {
+  padding-left: 12px;
+  border-radius: 14px 0 0 14px;
+}
+.leaderboard__cell:last-child {
+  padding-right: 20px;
+  border-radius: 0 14px 14px 0;
+}
+.leaderboard__cell--moves {
+  font-size: 18px;
+  font-weight: 500;
+}
+@media (max-width: 600px) {
+  .leaderboard__cell--moves {
+    font-size: 16px;
+  }
+}
+.leaderboard__cell--date {
+  font-size: 16px;
+  font-weight: 500;
+  text-align: right;
+  color: #6b6a72;
+}
+@media (max-width: 600px) {
+  .leaderboard__cell--date {
+    font-size: 14px;
+  }
+}
+@media (max-width: 600px) {
+  .leaderboard__cell {
+    padding-top: 4px;
+    padding-bottom: 4px;
+  }
+  .leaderboard__cell:last-child {
+    padding-right: 14px;
+  }
+}
+.leaderboard__place {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  font-family: "Russo One", "Rubik", sans-serif;
+  font-size: 16px;
+  border: 2px solid rgba(23, 22, 27, 0.25);
+  border-radius: 50%;
+}
+.leaderboard__row--top-1 .leaderboard__cell {
+  background-color: rgba(255, 209, 47, 0.25);
+}
+.leaderboard__row--top-1 .leaderboard__place {
+  background-color: #ffd12f;
+  border: 2.5px solid #17161b;
+}
+.leaderboard__row--top-2 .leaderboard__place {
+  background-color: #d9dce3;
+  border: 2.5px solid #17161b;
+}
+.leaderboard__row--top-3 .leaderboard__place {
+  background-color: #e8a36a;
+  border: 2.5px solid #17161b;
+}
+.leaderboard__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0 8px;
+  text-align: center;
+}
+.leaderboard__avatar {
+  position: relative;
+  width: 132px;
+  height: 132px;
+  overflow: hidden;
+  background-color: #ccd0ff;
+  border: 4px solid #17161b;
+  border-radius: 50%;
+}
+.leaderboard__avatar-image {
+  position: absolute;
+  top: 3%;
+  left: -3.8%;
+  width: 107.6%;
+  max-width: none;
+  height: auto;
+}
+.leaderboard__empty-title {
+  font-family: "Russo One", "Rubik", sans-serif;
+  font-size: 22px;
+  line-height: 1.2;
+}
+.leaderboard__empty-text {
+  max-width: 360px;
+  color: #6b6a72;
+}
+.leaderboard__footer {
+  display: flex;
+  justify-content: center;
+  padding-top: 4px;
 }
