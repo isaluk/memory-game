@@ -862,3 +862,99 @@ body::after {
 .footer__link:hover {
   color: #ffd12f;
 }
+
+.modal {
+  width: 520px;
+  max-width: calc(100% - 32px);
+  max-height: calc(100dvh - 32px);
+  margin: auto;
+  padding: 0 0 8px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  color: #17161b;
+  background: transparent;
+  border: 0;
+}
+.modal::backdrop {
+  background-color: rgba(23, 22, 27, 0.72);
+  backdrop-filter: blur(6px);
+}
+.modal[open] {
+  animation: modal-in 0.2s ease;
+}
+.modal[open]::backdrop {
+  animation: modal-backdrop-in 0.2s ease;
+}
+.modal--wide {
+  width: 560px;
+}
+.modal__panel {
+  position: relative;
+  padding: 32px 36px;
+  background-color: #fffdf6;
+  border: 3px solid #17161b;
+  border-radius: 28px;
+  box-shadow: 0 8px 0 #17161b;
+}
+@media (max-width: 600px) {
+  .modal__panel {
+    padding: 20px 16px;
+    border-radius: 22px;
+  }
+}
+.modal__close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  color: #17161b;
+  background-color: rgba(23, 22, 27, 0.06);
+  border: 2px solid #17161b;
+  border-radius: 50%;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+.modal__close:hover {
+  background-color: rgba(23, 22, 27, 0.14);
+}
+.modal__close:active {
+  transform: translateY(1px);
+}
+@media (max-width: 600px) {
+  .modal__close {
+    top: 12px;
+    right: 12px;
+  }
+}
+.modal__close-icon {
+  width: 24px;
+  height: 24px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .modal[open], .modal[open]::backdrop {
+    animation: none;
+  }
+}
+
+@keyframes modal-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes modal-backdrop-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

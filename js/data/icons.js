@@ -5,4 +5,5 @@ export const ICONS = {
     'M8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4',
     'M12 13v4M8.5 20h7M10 17h4',
   ],
+  close: ['M6 6l12 12M18 6L6 18'],
 };
