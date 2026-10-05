@@ -1,0 +1,29 @@
+@use "../abstracts" as *;
+
+.hint {
+  width: 220px;
+  padding: 16px 18px;
+  background-color: rgba($color-ink, 0.45);
+  border: 2px solid rgba($color-chalk, 0.25);
+  border-radius: $radius-panel;
+
+  @include laptop {
+    display: none;
+  }
+
+  &__title {
+    margin-bottom: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: $color-yellow;
+  }
+
+  &__text {
+    font-size: 14px;
+    line-height: 1.4;
+    color: rgba($color-chalk, 0.85);
+  }
+}

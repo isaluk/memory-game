@@ -7,7 +7,7 @@ export const createHeader = () => {
     label: 'Таблица лидеров',
     variant: 'secondary',
     icon: 'trophy',
-    className: 'header__button',
+    className: 'header__button header__button--leaderboard',
   });
 
   const newGameButton = createButton({

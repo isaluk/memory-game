@@ -1,5 +1,11 @@
 @use 'variables' as *;
 
+@mixin laptop {
+  @media (max-width: $bp-laptop) {
+    @content;
+  }
+}
+
 @mixin tablet {
   @media (max-width: $bp-tablet) {
     @content;

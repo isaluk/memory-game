@@ -1,16 +1,20 @@
-@use '../abstracts' as *;
+@use "../abstracts" as *;
 
 .playground {
   display: grid;
-  grid-template-areas: 'score board mascot';
-  grid-template-columns: 1fr auto 1fr;
+  grid-template-areas: "score board mascot";
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: start;
   gap: 32px;
   width: 100%;
 
   &__score {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
     grid-area: score;
     justify-self: center;
+    margin-top: 32px;
   }
 
   &__board {
@@ -19,20 +23,50 @@
 
   &__mascot {
     grid-area: mascot;
-    justify-self: center;
+    display: flex;
+    justify-content: flex-end;
+    justify-self: end;
+    width: calc(100% + 46px);
+    margin-top: 24px;
+    margin-right: -46px;
   }
 
-  @include tablet {
+  @include laptop {
     grid-template-areas:
-      'score'
-      'board'
-      'mascot';
+      "score"
+      "board";
     grid-template-columns: 1fr;
-    gap: 24px;
+    gap: 20px;
     justify-items: center;
+
+    &__score {
+      margin-top: 0;
+    }
+
+    &__mascot {
+      position: absolute;
+      top: 2px;
+      right: 16px;
+      width: auto;
+      margin: 0;
+    }
   }
 
   @include mobile {
+    grid-template-areas:
+      "score"
+      "board"
+      "mascot";
     gap: 16px;
+
+    &__score {
+      width: 100%;
+    }
+
+    &__mascot {
+      position: static;
+      justify-self: stretch;
+      margin-top: -14px;
+    }
   }
 }
