@@ -6,4 +6,6 @@ export const ICONS = {
     'M12 13v4M8.5 20h7M10 17h4',
   ],
   close: ['M6 6l12 12M18 6L6 18'],
+  soundOn: ['M11 5L6 9H3v6h3l5 4V5Z', 'M15.5 8.5a5 5 0 0 1 0 7', 'M18.5 5.5a9 9 0 0 1 0 13'],
+  soundOff: ['M11 5L6 9H3v6h3l5 4V5Z', 'M16 9l6 6M22 9l-6 6'],
 };

@@ -1,9 +1,29 @@
 import { SOUNDS } from '../data/sounds.js';
 
+const STORAGE_KEY = 'lazy-match-sound';
 const MIN_VOLUME = 0.0001;
+
+const readPreference = () => {
+  try {
+    return localStorage.getItem(STORAGE_KEY) !== 'off';
+  } catch {
+    return true;
+  }
+};
+
+const savePreference = (isOn) => {
+  try {
+    localStorage.setItem(STORAGE_KEY, isOn ? 'on' : 'off');
+
+    return true;
+  } catch {
+    return false;
+  }
+};
 
 export const createSound = () => {
   let context = null;
+  let isOn = readPreference();
 
   const getContext = () => {
     if (!context && window.AudioContext) {
@@ -40,6 +60,10 @@ export const createSound = () => {
   };
 
   const play = (name) => {
+    if (!isOn) {
+      return;
+    }
+
     const audio = getContext();
 
     if (audio) {
@@ -47,5 +71,12 @@ export const createSound = () => {
     }
   };
 
-  return { play };
+  const toggle = () => {
+    isOn = !isOn;
+    savePreference(isOn);
+
+    return isOn;
+  };
+
+  return { play, toggle, isEnabled: () => isOn };
 };

@@ -46,7 +46,7 @@
     }
 
     @include mobile {
-      gap: 10px;
+      gap: 8px;
     }
   }
 
@@ -55,10 +55,19 @@
       @include icon-only;
     }
 
+    &--sound {
+      @include icon-only;
+    }
+
     &--leaderboard {
       @media (max-width: $bp-header-compact) {
         @include icon-only;
       }
+    }
+
+    &.button--primary {
+      border-color: $color-yellow-dark;
+      box-shadow: none;
     }
   }
 }

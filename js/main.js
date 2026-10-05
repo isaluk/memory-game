@@ -96,8 +96,13 @@ const initApp = () => {
     startGame();
   };
 
+  header.setSoundState(sound.isEnabled());
   header.newGameButton.addEventListener('click', restartGame);
   header.leaderboardButton.addEventListener('click', showLeaderboard);
+  header.soundButton.addEventListener('click', () => {
+    header.setSoundState(sound.toggle());
+    sound.play('flip');
+  });
 
   playground.scoreSlot.append(scoreboard.element, createHint());
   playground.boardSlot.append(board.element);

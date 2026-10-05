@@ -1,8 +1,16 @@
 import { createElement } from '../utils/create-element.js';
 import { createLogo } from './logo.js';
 import { createButton } from './button.js';
+import { createIcon } from './icon.js';
 
 export const createHeader = () => {
+  const soundButton = createButton({
+    label: 'Звук',
+    variant: 'secondary',
+    icon: 'soundOn',
+    className: 'header__button header__button--sound',
+  });
+
   const leaderboardButton = createButton({
     label: 'Таблица лидеров',
     variant: 'secondary',
@@ -27,12 +35,18 @@ export const createHeader = () => {
           createElement('div', {
             className: 'header__actions',
             attrs: { role: 'group', 'aria-label': 'Управление игрой' },
-            children: [leaderboardButton, newGameButton],
+            children: [soundButton, leaderboardButton, newGameButton],
           }),
         ],
       }),
     ],
   });
 
-  return { element, newGameButton, leaderboardButton };
+  const setSoundState = (isOn) => {
+    soundButton.setAttribute('aria-pressed', String(isOn));
+    soundButton.setAttribute('title', isOn ? 'Выключить звук' : 'Включить звук');
+    soundButton.querySelector('.button__icon').replaceWith(createIcon(isOn ? 'soundOn' : 'soundOff', 'button__icon'));
+  };
+
+  return { element, newGameButton, leaderboardButton, soundButton, setSoundState };
 };

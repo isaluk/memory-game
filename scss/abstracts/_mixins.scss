@@ -18,6 +18,12 @@
   }
 }
 
+@mixin small {
+  @media (max-width: $bp-small) {
+    @content;
+  }
+}
+
 @mixin hover {
   @media (hover: hover) {
     &:hover {
