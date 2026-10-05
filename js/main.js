@@ -12,6 +12,7 @@ import { createModal } from './components/modal.js';
 import { createVictory, VICTORY_TITLE_ID } from './components/victory.js';
 import { createDeck } from './game/deck.js';
 import { createGame } from './game/game.js';
+import { addResult } from './services/leaderboard-storage.js';
 import { CARDS } from './data/cards.js';
 import { MATCH_PHRASES, MISMATCH_PHRASES, WIN_PHRASE } from './data/phrases.js';
 
@@ -27,10 +28,11 @@ const initApp = () => {
   const mascot = createMascot();
   const modal = createModal();
 
-  const showVictory = (moves) => {
+  const showVictory = ({ moves, place }) => {
     modal.open({
       content: createVictory({
         moves,
+        place,
         totalPairs: CARDS.length,
         onNewGame: () => {
           modal.close();
@@ -49,8 +51,9 @@ const initApp = () => {
     onMatch: () => mascot.say(getRandomItem(MATCH_PHRASES)),
     onMismatch: () => mascot.say(getRandomItem(MISMATCH_PHRASES)),
     onWin: ({ moves }) => {
+      const place = addResult(moves);
       mascot.say(WIN_PHRASE);
-      victoryTimer = setTimeout(() => showVictory(moves), VICTORY_DELAY);
+      victoryTimer = setTimeout(() => showVictory({ moves, place }), VICTORY_DELAY);
     },
   });
 

@@ -1061,6 +1061,13 @@ body::after {
   text-transform: uppercase;
   color: rgba(243, 240, 226, 0.75);
 }
+.victory__note {
+  max-width: 360px;
+  margin-top: -6px;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #6b6a72;
+}
 .victory__actions {
   display: flex;
   flex-wrap: wrap;

@@ -4,7 +4,12 @@ import { createButton } from './button.js';
 
 export const VICTORY_TITLE_ID = 'victory-title';
 
-export const createVictory = ({ moves, totalPairs, onNewGame, onClose }) => {
+const getPlaceNote = (place) =>
+  place
+    ? `Результат сохранён: ${place}-е место в таблице лидеров`
+    : 'В таблицу лидеров попадают 10 лучших игр — в следующий раз получится!';
+
+export const createVictory = ({ moves, place, totalPairs, onNewGame, onClose }) => {
   const newGameButton = createButton({ label: 'Новая игра', variant: 'primary', icon: 'restart' });
   const closeButton = createButton({ label: 'Закрыть', variant: 'outline' });
 
@@ -39,6 +44,7 @@ export const createVictory = ({ moves, totalPairs, onNewGame, onClose }) => {
           }),
         ],
       }),
+      createElement('p', { className: 'victory__note', text: getPlaceNote(place) }),
       createElement('div', {
         className: 'victory__actions',
         children: [newGameButton, closeButton],

@@ -85,6 +85,14 @@ $avatar-size-mobile: 120px;
     color: rgba($color-chalk, 0.75);
   }
 
+  &__note {
+    max-width: 360px;
+    margin-top: -6px;
+    font-size: 14px;
+    line-height: 1.4;
+    color: $color-muted;
+  }
+
   &__actions {
     display: flex;
     flex-wrap: wrap;
