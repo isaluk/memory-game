@@ -416,6 +416,23 @@ body::after {
   }
 }
 
+.board {
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  gap: 16px;
+  padding: 18px;
+  background-color: rgba(23, 22, 27, 0.2);
+  border: 2px dashed rgba(243, 240, 226, 0.35);
+  border-radius: 28px;
+}
+@media (max-width: 600px) {
+  .board {
+    gap: 8px;
+    padding: 8px;
+    border-radius: 18px;
+  }
+}
+
 .card {
   position: relative;
   display: block;
