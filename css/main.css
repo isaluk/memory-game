@@ -416,6 +416,171 @@ body::after {
   }
 }
 
+.card {
+  position: relative;
+  display: block;
+  width: 132px;
+  height: 132px;
+  border-radius: 16px;
+  perspective: 800px;
+  transition: transform 0.2s ease;
+}
+@media (max-width: 600px) {
+  .card {
+    width: 76px;
+    height: 76px;
+    border-radius: 10px;
+  }
+}
+@media (hover: hover) {
+  .card:not(.card--open, .card--matched, .card--mismatch):hover {
+    transform: translateY(-4px);
+  }
+  .card:not(.card--open, .card--matched, .card--mismatch):hover .card__side--back {
+    border-color: #f3f0e2;
+    box-shadow: 0 10px 0 rgba(0, 13, 5, 0.5), 0 0 24px rgba(255, 209, 47, 0.45);
+  }
+}
+.card--open, .card--matched, .card--mismatch {
+  cursor: default;
+}
+.card--open .card__inner, .card--matched .card__inner, .card--mismatch .card__inner {
+  transform: rotateY(180deg);
+}
+.card--matched .card__side--front {
+  border-color: #3ee07f;
+  box-shadow: 0 6px 0 rgba(0, 13, 5, 0.45), 0 0 20px rgba(62, 224, 127, 0.65);
+}
+.card--matched .card__badge {
+  opacity: 1;
+  background-color: #3ee07f;
+  background-image: url("../assets/icons/check.svg");
+}
+.card--mismatch {
+  animation: card-shake 0.4s ease 0.4s;
+}
+.card--mismatch .card__side--front {
+  border-color: #ff5b3d;
+  box-shadow: 0 6px 0 rgba(0, 13, 5, 0.45), 0 0 20px rgba(255, 91, 61, 0.65);
+}
+.card--mismatch .card__badge {
+  opacity: 1;
+  background-color: #ff5b3d;
+  background-image: url("../assets/icons/cross.svg");
+}
+.card__inner {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.4s ease;
+}
+.card__side {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border: 3px solid #17161b;
+  border-radius: 16px;
+  box-shadow: 0 6px 0 rgba(0, 20, 5, 0.45), 0 12px 24px -4px rgba(0, 0, 0, 0.25);
+  backface-visibility: hidden;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+@media (max-width: 600px) {
+  .card__side {
+    border-width: 2px;
+    border-radius: 10px;
+  }
+}
+.card__side--back {
+  background: #ffd12f url("../assets/images/card-back.svg") center/100% 100% no-repeat;
+  background-origin: border-box;
+}
+.card__side--front {
+  transform: rotateY(180deg);
+}
+.card__side--footballer {
+  background-color: #bfebc8;
+}
+.card__side--sleepyhead {
+  background-color: #ccd0ff;
+}
+.card__side--coffee-lover {
+  background-color: #ffd3ae;
+}
+.card__side--coder {
+  background-color: #b8e4ff;
+}
+.card__side--music-lover {
+  background-color: #ffc4dc;
+}
+.card__side--graduate {
+  background-color: #e3f59e;
+}
+.card__side--goalkeeper {
+  background-color: #e5c8ff;
+}
+.card__side--chill {
+  background-color: #a6f0e0;
+}
+.card__image {
+  position: absolute;
+  top: 3%;
+  left: -3.8%;
+  width: 107.6%;
+  max-width: none;
+  height: auto;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  pointer-events: none;
+}
+.card__badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 28px;
+  height: 28px;
+  border: 2.5px solid #17161b;
+  border-radius: 50%;
+  background: center/18px 18px no-repeat;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease 0.3s;
+}
+@media (max-width: 600px) {
+  .card__badge {
+    top: 4px;
+    right: 4px;
+    width: 18px;
+    height: 18px;
+    border-width: 1.5px;
+    background-size: 12px 12px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .card, .card__inner, .card__side, .card__badge {
+    transition: none;
+  }
+  .card--mismatch {
+    animation: none;
+  }
+}
+
+@keyframes card-shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-3px);
+  }
+}
 .footer {
   padding: 16px 16px 20px;
   font-size: 13px;
