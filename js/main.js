@@ -38,6 +38,8 @@ const initApp = () => {
     mascot.say();
   };
 
+  header.newGameButton.addEventListener('click', startGame);
+
   playground.scoreSlot.append(scoreboard.element, createHint());
   playground.boardSlot.append(board.element);
   playground.mascotSlot.append(mascot.element);
