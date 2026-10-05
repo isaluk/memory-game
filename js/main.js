@@ -8,30 +8,56 @@ import { createHint } from './components/hint.js';
 import { createBoard } from './components/board.js';
 import { createMascot } from './components/mascot.js';
 import { createFooter } from './components/footer.js';
+import { createModal } from './components/modal.js';
+import { createVictory, VICTORY_TITLE_ID } from './components/victory.js';
 import { createDeck } from './game/deck.js';
 import { createGame } from './game/game.js';
 import { CARDS } from './data/cards.js';
 import { MATCH_PHRASES, MISMATCH_PHRASES, WIN_PHRASE } from './data/phrases.js';
 
+const VICTORY_DELAY = 700;
+
 const initApp = () => {
   let cards = [];
+  let victoryTimer = null;
 
   const header = createHeader();
   const playground = createPlayground();
   const scoreboard = createScoreboard({ totalPairs: CARDS.length });
   const mascot = createMascot();
+  const modal = createModal();
+
+  const showVictory = (moves) => {
+    modal.open({
+      content: createVictory({
+        moves,
+        totalPairs: CARDS.length,
+        onNewGame: () => {
+          modal.close();
+          startGame();
+        },
+        onClose: () => modal.close(),
+      }),
+      labelledBy: VICTORY_TITLE_ID,
+      variant: 'victory',
+    });
+  };
 
   const game = createGame({
     onCardChange: (index, state) => cards[index].setState(state),
     onStatsChange: (stats) => scoreboard.update(stats),
     onMatch: () => mascot.say(getRandomItem(MATCH_PHRASES)),
     onMismatch: () => mascot.say(getRandomItem(MISMATCH_PHRASES)),
-    onWin: () => mascot.say(WIN_PHRASE),
+    onWin: ({ moves }) => {
+      mascot.say(WIN_PHRASE);
+      victoryTimer = setTimeout(() => showVictory(moves), VICTORY_DELAY);
+    },
   });
 
   const board = createBoard({ onCardClick: (index) => game.flip(index) });
 
   const startGame = () => {
+    clearTimeout(victoryTimer);
     const deck = createDeck();
     cards = board.render(deck);
     game.start(deck);
@@ -54,7 +80,7 @@ const initApp = () => {
     children: [header.element, main, createFooter()],
   });
 
-  document.body.append(page);
+  document.body.append(page, modal.element);
   startGame();
 };
 

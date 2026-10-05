@@ -15,18 +15,14 @@
   }
 
   &__stat {
+    @include led-panel;
+
     display: flex;
     flex-direction: column-reverse;
     align-items: center;
     gap: 6px;
     width: 220px;
     padding: 16px 20px 18px;
-    background-color: rgba($color-ink, 0.92);
-    border: 3px solid $color-chalk;
-    border-radius: $radius-panel;
-    box-shadow:
-      $glow-chalk,
-      inset 0 0 12px rgba($color-chalk, 0.25);
 
     @include laptop {
       width: 200px;
@@ -41,11 +37,8 @@
   }
 
   &__label {
-    font-size: 12px;
-    font-weight: 600;
-    line-height: 1.2;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+    @include caps-label;
+
     color: rgba($color-chalk, 0.75);
 
     @include mobile {
@@ -54,13 +47,7 @@
   }
 
   &__value {
-    font-family: $font-led;
-    font-size: 44px;
-    font-weight: 700;
-    line-height: 1;
-    letter-spacing: 0.02em;
-    color: $color-led;
-    text-shadow: $glow-led;
+    @include led-value;
 
     @include mobile {
       font-size: 30px;
